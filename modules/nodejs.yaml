@@ -1,0 +1,8 @@
+id: nodejs
+name: Node.js
+description: JavaScript runtime.
+category: languages
+install:
+  linux:
+    - "curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - && sudo apt-get install -y nodejs"
+check: "node --version"

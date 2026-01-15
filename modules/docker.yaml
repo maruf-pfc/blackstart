@@ -1,0 +1,10 @@
+id: docker
+name: Docker Engine
+description: Industry standard container runtime and CLI tools.
+category: devops
+install:
+  linux:
+    - "curl -fsSL https://get.docker.com | sh"
+  mac:
+    - "brew install --cask docker"
+check: "docker --version"

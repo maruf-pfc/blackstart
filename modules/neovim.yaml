@@ -1,0 +1,12 @@
+id: neovim
+name: Neovim
+description: Hyperextensible Vim-based text editor.
+category: editors
+install:
+  linux:
+    - "echo 'Downloading Neovim...'"
+    - "sleep 1"
+    - "echo 'Extracting...'"
+    - "sleep 1"
+    - "echo 'Neovim installed (mock).'"
+check: "nvim --version"

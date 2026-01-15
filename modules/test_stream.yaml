@@ -1,0 +1,13 @@
+id: test-stream
+name: Streaming Verification Tool
+description: A mock tool that demonstrates real-time logging.
+category: system
+install:
+  linux:
+    - "echo '[1/3] Fetching data packets...'"
+    - "for i in {1..5}; do echo \"  > Segment $i received\"; sleep 0.5; done"
+    - "echo '[2/3] Decrypting manifest...'"
+    - "sleep 1"
+    - "echo '[3/3] Finalizing installation...'"
+    - "echo 'Verification complete.'"
+check: "false" # Force install to run

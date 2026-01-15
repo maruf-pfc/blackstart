@@ -1,0 +1,8 @@
+id: homebrew
+name: Homebrew
+description: Package manager for macOS (and Linux).
+category: system
+install:
+  linux:
+    - "/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\""
+check: "brew --version"
