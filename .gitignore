@@ -1,0 +1,80 @@
+# ========================
+# Next.js / Node.js
+# ========================
+frontend/node_modules/
+frontend/.next/
+frontend/.turbopack/
+frontend/out/
+frontend/dist/
+frontend/build/
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/.pnpm-debug.log*
+
+# ========================
+# ASP.NET Core / .NET
+# ========================
+backend/**/bin/
+backend/**/obj/
+backend/**/*.user
+backend/**/*.suo
+backend/**/*.userosscache
+backend/**/*.sln.docstates
+backend/**/appsettings.Development.json
+backend/**/appsettings.Production.json
+backend/.vs/
+backend/**/*.db
+backend/**/*.db-shm
+backend/**/*.db-wal
+
+# ========================
+# Environment & Secrets
+# ========================
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.cert
+secrets/
+
+# ========================
+# Docker
+# ========================
+.dockerignore
+docker-compose.override.yml
+
+# ========================
+# OS & Editor
+# ========================
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# ========================
+# Logs & Temp
+# ========================
+logs/
+*.log
+tmp/
+temp/
+coverage/
+.nyc_output/
+
+# ========================
+# Publishing
+# ========================
+backend/**/publish/
+backend/**/*.nupkg
+backend/**/*.snupkg

@@ -1,0 +1,6 @@
+@BlackstartLabs.API_HostAddress = http://localhost:5186
+
+GET {{BlackstartLabs.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

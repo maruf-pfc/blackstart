@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="BlackstartLabs.API/BlackstartLabs.API.csproj" />
+  <Project Path="BlackstartLabs.Application/BlackstartLabs.Application.csproj" />
+  <Project Path="BlackstartLabs.Domain/BlackstartLabs.Domain.csproj" />
+  <Project Path="BlackstartLabs.Infrastructure/BlackstartLabs.Infrastructure.csproj" />
+</Solution>

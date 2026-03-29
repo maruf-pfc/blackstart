@@ -1,8 +1,0 @@
-id: python
-name: Python
-description: Interpreted, high-level, general-purpose programming language.
-category: languages
-install:
-  linux:
-    - "sudo apt-get install -y python3"
-check: "python3 --version"
