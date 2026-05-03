@@ -1,6 +1,6 @@
-# init.sh
+# blackstart
 
-> Turn a fresh Linux install into a fully equipped dev machine — with a single command.
+> Bring your Linux machine up from zero — one command, fully equipped.
 
 <p align="center">
   <img src="https://img.shields.io/badge/Debian%20%2F%20Ubuntu-supported-blue?logo=ubuntu&logoColor=white" />
@@ -12,15 +12,26 @@
 
 ---
 
-## What is this?
+In power engineering, a **black start** is the process of restoring a system from complete shutdown — no external power, no dependencies, from absolute zero.
 
-`init.sh` is a modular, idempotent bootstrap script that transforms a clean Linux system into a complete developer workstation. It auto-detects your distro and supports multiple installation profiles via flags.
+That's exactly what this does for your dev machine.
 
-**Use cases:**
-- New machine setup in minutes
-- Reproducible dev environments
-- CI/CD base image provisioning
-- Dotfiles bootstrapping
+---
+
+## Quick Start
+
+```bash
+git clone https://github.com/blackstart-labs/blackstart.git
+cd blackstart
+chmod +x devsetup.sh
+sudo ./devsetup.sh --full
+```
+
+Or run directly (audit the script first):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/blackstart-labs/blackstart/main/devsetup.sh | sudo bash -s -- --minimal
+```
 
 ---
 
@@ -32,23 +43,6 @@
 | Debian 11+ | apt | ✅ Fully supported |
 | Arch Linux | pacman + yay | ✅ Fully supported |
 | Manjaro | pacman | ✅ Compatible |
-
----
-
-## Quick Start
-
-```bash
-git clone https://github.com/blackstart-labs/init.sh.git
-cd init.sh
-chmod +x devsetup.sh
-sudo ./devsetup.sh --full
-```
-
-Or run directly (audit first!):
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/blackstart-labs/init.sh/main/devsetup.sh | sudo bash -s -- --minimal
-```
 
 ---
 
@@ -68,7 +62,7 @@ curl -fsSL https://raw.githubusercontent.com/blackstart-labs/init.sh/main/devset
 |---|---|
 | `--dry-run` | Print all commands without executing anything |
 | `--dotfiles <url>` | Clone and apply your personal dotfiles repo |
-| `--help` | Show usage information |
+| `--help` | Show usage |
 
 ---
 
@@ -95,8 +89,8 @@ curl -fsSL https://raw.githubusercontent.com/blackstart-labs/init.sh/main/devset
   - `zsh-autosuggestions`
   - `zsh-syntax-highlighting`
   - `git`, `docker`, `kubectl`, `python`, `node`, `rust`, `fzf`, `z`
-- **Starship** prompt (replaces ZSH_THEME)
-- Fully configured `.zshrc` with aliases, PATH setup, and editor settings
+- **Starship** prompt
+- Fully configured `.zshrc` with aliases, PATH setup, and editor defaults
 
 ### CLI Enhancements
 `bat` (cat replacement) · `eza` (ls replacement) · `httpie` · `zellij` · `tmux`
@@ -130,19 +124,19 @@ curl -fsSL https://raw.githubusercontent.com/blackstart-labs/init.sh/main/devset
 ## Examples
 
 ```bash
-# Minimal setup — just the essentials
+# Minimal — just the essentials
 sudo ./devsetup.sh --minimal
 
 # Full workstation
 sudo ./devsetup.sh --full
 
-# DevOps machine with dotfiles
+# DevOps machine with your dotfiles
 sudo ./devsetup.sh --devops --dotfiles https://github.com/you/dotfiles
 
 # Security / CTF rig
 sudo ./devsetup.sh --security
 
-# See everything it would do without touching your system
+# Preview everything without touching your system
 sudo ./devsetup.sh --full --dry-run
 
 # Let it ask you what to install
@@ -153,7 +147,7 @@ sudo ./devsetup.sh --interactive
 
 ## Dotfiles Support
 
-Pass your dotfiles repo URL and the script will:
+Pass your dotfiles repo and blackstart will:
 1. Clone it to `~/.dotfiles`
 2. Run `install.sh` / `setup.sh` / `bootstrap.sh` if present
 3. Symlink common files (`.zshrc`, `.gitconfig`, `.tmux.conf`, `nvim/`, etc.)
@@ -161,19 +155,6 @@ Pass your dotfiles repo URL and the script will:
 ```bash
 sudo ./devsetup.sh --full --dotfiles https://github.com/you/dotfiles
 ```
-
----
-
-## Customization
-
-| What | Where in script |
-|---|---|
-| Add packages | `APT_PKGS` / `PACMAN_PKGS` arrays in `install_core` |
-| Add VS Code extensions | `EXTENSIONS` array in `install_editors` |
-| Change Node version | `nvm install --lts` line in `install_languages` |
-| Modify `.zshrc` | `configure_zshrc` heredoc |
-| Add Flatpak apps | `FLATPAK_APPS` array in `install_flatpak` |
-| Add a new stage | Write `install_X()` function, call it from `main()` |
 
 ---
 
@@ -194,25 +175,36 @@ sudo ./devsetup.sh --full --dotfiles https://github.com/you/dotfiles
 # Apply shell changes immediately
 exec zsh
 
-# Use Docker without sudo (no re-login needed)
+# Use Docker without sudo right away
 newgrp docker
 
-# Add your SSH key to GitHub
+# Copy your SSH key to GitHub
 cat ~/.ssh/id_ed25519.pub
 
-# Configure Bangla input
+# Set up Bangla input
 ibus-setup
+```
+
+---
+
+## Repository Structure
+
+```
+blackstart/
+├── devsetup.sh     ← the bootstrap script
+├── README.md
+└── LICENSE         ← MIT
 ```
 
 ---
 
 ## Contributing
 
-PRs welcome! Please:
+PRs welcome. Please:
 - Test on both Ubuntu and Arch before submitting
 - Keep functions modular and idempotent
-- Add a comment for any non-obvious logic
-- Update this README if you add a new category
+- Comment any non-obvious logic
+- Update the README if you add a new category
 
 ---
 
